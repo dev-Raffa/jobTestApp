@@ -1,0 +1,23 @@
+button{
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  font-weight: bolder;
+}
+
+button[variant="outline"] {
+  border: 1px solid #17c5ef;
+  background-color: transparent;
+  color: #17c5ef;
+  padding: 3.5px 8px;
+}
+
+button[variant="default"] {
+  background-color: #17c5ef;
+  color: black;
+  
+}

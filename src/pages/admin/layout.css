@@ -1,0 +1,11 @@
+.admin-root-layout{
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+.admin-root-layout > .outlet {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&display=swap');
+
+div[class="logo"] {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 4px;
+  color: #17c5ef;
+}
+
+div[class="logo"] > figure {
+  font-size: 28px;
+}
+
+div[class="logo"] > p {
+  font-family: 'Quattrocento', serif;
+  font-size: 18px;
+  user-select: none;
+}

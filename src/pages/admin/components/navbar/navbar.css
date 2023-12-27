@@ -1,0 +1,106 @@
+.navbar{
+  background-color: black;
+  width: 260px;
+  height: auto;
+  min-height: 100vh;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 120px;
+  transition: all ease 0.5s;
+  position: relative;
+}
+.navbar > header {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+}
+.navbar > header > .logo {
+  overflow: hidden;
+}
+
+.navbar >header> button {
+    color: #17c5ef;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 0;
+    transition: all ease 0.5s;
+}
+
+.navbar >nav {
+  width: 100%;
+}
+
+.navbar > nav > ul {
+  width: 100%;
+  padding: 24px 8px;
+  background: rgb(24, 23, 23);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.navbar > nav > ul > li {
+  list-style: none;
+  color: #17c5ef;
+}
+
+.navbar > nav > ul > li> a {
+  text-decoration: none;
+  color: currentColor;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  overflow: hidden;
+  font-size: 20px;
+  height: 40px;
+  width: 200px;
+}
+.navbar > nav >ul> li> a > span {
+  font-size: 18px;
+}
+
+.navbar > footer {
+  position: absolute;
+  bottom: 20px;
+  width: calc(100% - 48px);
+  display: flex;
+  justify-content: flex-end;
+  background: antiquewhite;
+  height: 30px;
+  border-radius: 4px;
+  background: rgb(24, 23, 23);
+  align-items: center;
+  padding: 8px;
+}
+
+.navbar > footer > button {
+  color: #17c5ef;
+    background-color: transparent;
+    font-size: 20px;
+    padding: 0;
+    transition: all ease 0.5s;
+}
+
+.navbar[value=false] {
+  width: 88px;
+}
+
+.navbar[value=false] > header > .logo {
+  animation: encolher ease 0.5s forwards;
+}
+
+
+
+@keyframes encolher {
+  from{
+    width: 100%;
+  }
+  to{
+    width: 0%;
+    display: none;
+  }
+}

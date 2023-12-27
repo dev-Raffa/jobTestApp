@@ -1,0 +1,57 @@
+cw-carousel>.nextButton {
+  right: 0px;
+}
+
+
+.carousel-item {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+ height: 450px;
+}
+
+.carousel-item::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(1px) brightness(0.5)
+}
+
+.carousel-item > figcaption {
+  position: absolute;
+  z-index: 2;
+  color: #17c5ef;
+  left: 96px;
+  top: 100px;
+}
+
+.carousel-item > figcaption > section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 75px;
+}
+
+.carousel-item > figcaption > section::after {
+  position: absolute;
+  content: '';
+  width: 5px;
+  height: 83%;
+  top: 11%;
+  background-color: blue;
+  left: -8px;
+}
+
+.carousel-item> figcaption > section > p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
