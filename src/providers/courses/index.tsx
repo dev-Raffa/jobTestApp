@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react"
-import { CoursesContext } from "./context"
+import { CoursesContext, addCourseResp } from "./context"
 import { ICourses, courseAddArgs, coursesFilters } from "../../services/Api/types"
 import { Api } from "../../services/Api"
 
@@ -8,8 +8,11 @@ export const CousesProvider = ({children}: {children: ReactNode}) => {
   const categories = Api.categories
 
   const addCourse = (args: courseAddArgs)=>{
-    const res = Api.saveCourse(args)
-    setCouses(res)
+    const res:addCourseResp = Api.saveCourse(args)
+    if(res.msg == "success"){
+      res.obj && setCouses(res.obj)
+    }
+    return res
   }
 
   const updateCourse = (args: ICourses)=>{
@@ -22,14 +25,15 @@ export const CousesProvider = ({children}: {children: ReactNode}) => {
     setCouses(res)
   }
 
-  const getOneCourse=(args: number)=>{
-    const index = courses.findIndex((course) => course.id === args)
+  const getOneCourse=(args: string)=>{
+    const index = courses.findIndex((course) => course.id.toString() === args)
     
     return courses[index]
   }
 
-  const getCoursesFiltered=(filter: coursesFilters, value: string | number | boolean )=>{
-    return courses.filter((course)=> course[`${filter}`] === value)
+  const getCoursesFiltered=(filter: coursesFilters, value: string)=>{
+    return courses.filter((course)=> course[`${filter}`].toString() === value)
+    
   }
 
   return (

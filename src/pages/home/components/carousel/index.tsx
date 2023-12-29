@@ -7,7 +7,7 @@ import './carousel.css'
 export const Carousel = ()=> {
   const {getCoursesFiltered} = useContext(CoursesContext)
   
-  const highlights:ICourses[] = getCoursesFiltered('highlight', true)
+  const highlights:ICourses[] = getCoursesFiltered('highlight', "true")
 
   return(
     <CwCarousel width='100vw' height='450px' index colors='#17c5ef'>

@@ -27,7 +27,18 @@ class jobTestApi {
   }
 
   saveCourse(args: courseAddArgs){
-    return this.coursesRouter.add(args)
+    const resp = this.coursesRouter.add(args)
+    
+    if(resp.length > 0 ){
+      return {
+        msg: 'success',
+        obj: resp
+      }
+    }else {
+      return {
+        msg:"error"
+      }
+    }
   }
 
   updateCourse(args: ICourses){
