@@ -22,6 +22,7 @@ export const NavBar = ()=>{
 
   return (
     <>
+     {/*@ts-expect-error Property 'variant' does not exist on type 'DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>'. */}
       <aside value={`${isOpen}`} className='navbar'>
         <header>
           <Logo />
