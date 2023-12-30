@@ -5,9 +5,9 @@ import { useCourses } from "../../providers/courses/context"
 export const CoursePage = ()=> {
  const {courseId} = useParams()
  const { getOneCourse }= useCourses()
- const course = getOneCourse(Number(courseId))
+ const course = courseId && getOneCourse(courseId)
 
-  return (
+  return course && (
     <section className='course-details'>
       <figure>
         <img src={course.imgUrl} alt={course.title} />

@@ -9,26 +9,52 @@
     font-size: 18px;
 }
 
-.table.courses > tr {
+.table.courses > tbody > tr {
     user-select: none;
     cursor: pointer;
 }
-.table.courses > :nth-child(odd):not(:first-child){
+.table.courses > tbody > :nth-child(odd):not(:first-child){
     background-color: aliceblue;
 }
 
-.table.courses > :nth-child(even) {
+.table.courses > tbody > :nth-child(even) {
     background-color: #d1d1d187;
 }
 
-.table.courses > tr > th.tb-col {
+.table.courses > tbody > tr > th.tb-col {
     text-align: left;
     padding-bottom: 0;
 }
-.table.courses > tr > .tb-col {
+.table.courses > tbody > tr > .tb-col {
     padding: 12px;
 }
-.table.courses >  tr > .tb-col.id {
+.table.courses > tbody >  tr > .tb-col.id {
     width: 25px;
 }
 
+.table.courses > tbody >  tr > .tb-col.actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+.tb-col.actions > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    margin: 0;
+}
+.tb-col.actions > a {
+    color: rgb(15, 1, 51);
+}
+.tb-col.actions > .edit  {
+    color: green;
+}
+.tb-col.actions > .clear {
+    color: rgb(173, 5, 5);
+}

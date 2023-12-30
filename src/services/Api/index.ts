@@ -11,11 +11,13 @@ class jobTestApi {
   }
 
   private getCategories (){
-    let courses  =  this.coursesRouter.getAll()
-     courses = courses.filter((course, index, self )=>{
-      self.indexOf(course)=== index
+    const courses  =  this.coursesRouter.getAll()
+    
+     courses.filter((course)=>{
+      if(!this.categories.includes(course.category)){
+        this.categories.push(course.category)
+      } 
     })
-    courses.map((course)=> this.categories.push(course.category))
   }
 
   getCourses(){

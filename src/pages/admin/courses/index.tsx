@@ -1,23 +1,28 @@
 import './courses.css'
 import {  TableCourses } from "./components/table"
-import { useCourses } from '../../../providers/courses/context'
 import { FilterCourses } from './components/filter'
 import { SearchCourse } from './components/search'
+import { Button } from '../../../components/button'
+import { useModal } from '../../../providers/modal/context'
+import { useCourses } from '../../../providers/courses/context'
 
 
 export const CoursesAdmin = () =>{
-  const {courses} = useCourses()
+  const {setShow}= useModal()
+  const {courses, filteredCourses}= useCourses()
   return (
     <>
       <header className='course-admin-header'>
-        <h1>Couses</h1>
+        <h1>Cursos</h1>
       </header>
       <section  className='course-admin-section-search'>
-        <SearchCourse />
-        <FilterCourses />
+        <div>
+          <SearchCourse />
+          <FilterCourses />
+          <Button variant='default' onClick={()=>setShow(true)}>criar curso</Button>
+        </div>
       </section>
-      <TableCourses courses={courses} 
-      />  
+      <TableCourses courses= {filteredCourses? filteredCourses: courses} />  
     </>
   )
 }

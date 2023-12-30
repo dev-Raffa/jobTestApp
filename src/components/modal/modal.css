@@ -16,7 +16,8 @@
 .modal > section {
     width: fit-content;
     height: fit-content;
-    background-color: aliceblue;
-    padding: 12px;
+    background-color: #f7f7f7;
+    padding: 16px;
     border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px #b8d5f77a;
 }

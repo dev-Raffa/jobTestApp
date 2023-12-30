@@ -78,6 +78,7 @@ export class MockRouterIcourses {
   }
 
   delete(id: number){
+    console.log('capturou')
     const itemIndex  = this.repository.findIndex((course)=>course.id === id)
 
     this.repository.splice(itemIndex,1)

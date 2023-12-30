@@ -1,0 +1,10 @@
+.filter-courses-category {
+    width: 40%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    padding: 0 8px;
+    min-width: 250px;
+}

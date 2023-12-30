@@ -1,5 +1,9 @@
-import { createContext, useContext } from "react";
+import { createContext } from "react";
 import { ICourses, courseAddArgs, coursesFilters } from "../../../services/Api/types";
+import { useContext } from "react";
+
+
+
 
 export type addCourseResp = {
   msg:string,
@@ -8,12 +12,13 @@ export type addCourseResp = {
 
 interface coursesContext {
   courses: ICourses[]
+  filteredCourses?: ICourses[]
   categories: string[]
   addCourse: (args:courseAddArgs)=> addCourseResp
   updateCourse:(args: ICourses)=> void
   removeCourse:(id:number)=> void
   getOneCourse:(id:string)=>ICourses
-  getCoursesFiltered:(filter: coursesFilters, value: string)=>ICourses[] 
+  filterCourses:(filter: coursesFilters, value: string | boolean | number)=>void
 }
 
 export const CoursesContext = createContext({}as coursesContext)
