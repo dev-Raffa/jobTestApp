@@ -9,7 +9,12 @@ import { useCourses } from '../../../providers/courses/context'
 
 export const CoursesAdmin = () =>{
   const {setShow}= useModal()
-  const {courses, filteredCourses}= useCourses()
+  const {setIdCourseSelected} = useCourses()
+
+  const addButtonHandle = ()=>{
+    setIdCourseSelected(undefined)
+    setShow(true)
+  }
   return (
     <>
       <header className='course-admin-header'>
@@ -19,10 +24,12 @@ export const CoursesAdmin = () =>{
         <div>
           <SearchCourse />
           <FilterCourses />
-          <Button variant='default' onClick={()=>setShow(true)}>criar curso</Button>
+          <Button variant='default' onClick={()=>addButtonHandle()}>
+            criar curso
+          </Button>
         </div>
       </section>
-      <TableCourses courses= {filteredCourses? filteredCourses: courses} />  
+      <TableCourses />  
     </>
   )
 }

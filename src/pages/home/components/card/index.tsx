@@ -14,7 +14,7 @@ export const SectionCards =()=>{
             <Link to={`courses/${course.id}`}>
                 <CwCard key={`section-course-card${index}`} width='350px' height='300px' bgColor='#d1d1d1' borderRadius='5px'>
                   <figure>
-                    <img src={course.imgUrl} alt={course.title} />
+                    <img src={course.imageUrl} alt={course.title} />
                     <figcaption>{course.title}</figcaption>
                   </figure>
                 </CwCard>

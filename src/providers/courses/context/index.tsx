@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { ICourses, courseAddArgs, coursesFilters } from "../../../services/Api/types";
+import { ICourses, courseAddArgs, coursesFilters } from "../../../services/Api/types/course";
 import { useContext } from "react";
 
 
@@ -13,12 +13,14 @@ export type addCourseResp = {
 interface coursesContext {
   courses: ICourses[]
   filteredCourses?: ICourses[]
-  categories: string[]
-  addCourse: (args:courseAddArgs)=> addCourseResp
-  updateCourse:(args: ICourses)=> void
-  removeCourse:(id:number)=> void
-  getOneCourse:(id:string)=>ICourses
-  filterCourses:(filter: coursesFilters, value: string | boolean | number)=>void
+  idCourseSelected?: number;
+  setIdCourseSelected: (id?:number)=> void
+  getCategories: () => string[]
+  add: (args:courseAddArgs)=> void
+  update:(id:number,args: ICourses)=> Promise<void>
+  remove:(id:number)=> Promise<void>
+  getOne:(id:string)=>ICourses
+  filter:(filter: coursesFilters, value: string | boolean | number)=>void
 }
 
 export const CoursesContext = createContext({}as coursesContext)

@@ -3,10 +3,11 @@ import './index.css'
 import { useCourses } from "../../../../../providers/courses/context"
 
 export const FilterCourses = () =>{
-    const{filterCourses, categories}= useCourses()
+    const{filter, getCategories}= useCourses()
+    const categories = getCategories() 
 
     const onChangdHandle =(value:string) =>{
-        filterCourses('category', value)
+        filter('category', value)
     }
     return(
         <select 
@@ -15,7 +16,7 @@ export const FilterCourses = () =>{
             onChange={(e)=>onChangdHandle(e.target.value)}
         >    
             <option value="">categeria</option>
-            {categories.map((category)=> <option key={`filter-category-${category}`} value={category}>{category}</option>)}
+            {categories && categories.map((category)=> <option key={`filter-category-${category}`} value={category}>{category}</option>)}
         </select>
     )
 }

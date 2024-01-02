@@ -1,44 +1,99 @@
 import { ReactNode, useState } from "react"
-import { CoursesContext, addCourseResp } from "./context"
-import { ICourses, courseAddArgs, coursesFilters } from "../../services/Api/types"
+import { CoursesContext } from "./context"
+import { ICourses, courseAddArgs, coursesFilters,} from "../../services/Api/types/course"
 import { Api } from "../../services/Api"
 
+const Courses:ICourses[] = await Api.course.getAll().then()
+
 export const CousesProvider = ({children}: {children: ReactNode}) => {
-  const [courses, setCouses] =  useState<ICourses[]>(Api.getCourses())
+  const [courses, setCourses] =  useState<ICourses[]>(Courses)
   const [filteredCourses, setFilteredCourses] = useState<ICourses[]>()
-  const categories = Api.categories
+  const [idCourseSelected, changeIdCourseSelected] = useState<number>()
 
-  const addCourse = (args: courseAddArgs)=>{
-    const res:addCourseResp = Api.saveCourse(args)
-    if(res.msg == "success"){
-      res.obj && setCouses(res.obj)
-    }
-    return res
+  const setIdCourseSelected=(id?: number)=>{
+    changeIdCourseSelected(id)
   }
 
-  const updateCourse = (args: ICourses)=>{
-    const res = Api.updateCourse(args)
-    setCouses(res)
+  const getOne =  (id: string) => {
+    const course = courses?.find((course)=> course.id.toString() === id)
+    if(!course){
+      throw new Error('curso não encontrado.')
+    }
+    return course
   }
 
-  const removeCourse=(args: number) =>{
+  const add = async (args: courseAddArgs) => {
+    const courseExist = courses.find((course)=> course.title.toLowerCase() === args.title.toLowerCase())
 
-    const res = Api.deleteCourse(args)
-    setCouses(res)
-    if(filteredCourses) {
-      const index = filteredCourses.findIndex((course)=>course.id === args)
-      filteredCourses.splice(index,1)
+    if(courseExist){
+      throw new Error(`O curso ${args.title} já existe.`)
     }
+
+    const newCourse:ICourses = await Api.course.save(args).then((resp)=>resp.json())
+    
+    setCourses([
+      ...courses,
+      {
+        id: newCourse.id,
+        title: newCourse.title,
+        description: newCourse.category,
+        category: newCourse.category,
+        highlight: newCourse.highlight,
+        imageUrl: newCourse.imageUrl
+      }
+    ])
     
   }
 
-  const getOneCourse=(args: string)=>{
-    const index = courses.findIndex((course) => course.id.toString() === args)
+  const update = async (id: number, args: courseAddArgs) => {
+    const idIsValid = courses.filter((course)=>{course.id ==id})
+
+    if(!idIsValid){
+      throw new Error('Id inválido, tente novamente.')
+    }
+
+    const newCourses: ICourses[] = await Api.course.update(id, args).then((resp)=> resp.json())
+     
+    if(newCourses){
+      const newListCourses: ICourses[] =  courses.map((course)=>{
+        if(course.id !== id){
+          return course
+        }else {
+          return {id: id, ...args}
+        }
+      })
+      setCourses(newListCourses)
+    }
     
-    return courses[index]
+  } 
+
+  const remove = async (id:number) => {
+    const idIsValid = courses.filter((course)=> course.id === id)
+    
+    if(!idIsValid){
+      throw new Error('Id inválido, tente novamente.')
+    }
+ 
+    await Api.course.delete(id).then(()=>{
+      
+      setCourses(courses.filter((course)=> course.id !== id))
+    })
   }
 
-  const filterCourses=(filter: coursesFilters, value: string|number|boolean)=>{
+  
+  const getCategories = () =>{
+    const categories: string[]  =  [] 
+    courses.map((course)=>{
+      const ver = categories.includes(course.category)
+      if(!ver){
+        categories.push(course.category)
+      }
+    })
+    return categories;
+  }
+
+  
+  const filter = (filter: coursesFilters, value: string|number|boolean)=>{
     if(!value){
       setFilteredCourses(undefined)
       return
@@ -52,7 +107,8 @@ export const CousesProvider = ({children}: {children: ReactNode}) => {
   }
 
   return (
-    <CoursesContext.Provider  value={{courses, categories, filteredCourses, addCourse, updateCourse, removeCourse, getOneCourse, filterCourses}}>
+    <CoursesContext.Provider  value={
+      {courses, filteredCourses, idCourseSelected, setIdCourseSelected, add, getOne, filter, update,remove, getCategories}}>
         {children}
     </CoursesContext.Provider>
     )

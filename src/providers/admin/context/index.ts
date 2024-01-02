@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
-import { IAppSessionStorage } from "../../../services/appSessionStorage/types";
+
 
 export interface IAdminContext {
   isLogged: boolean;
-  login: (args:IAppSessionStorage) => void;
+  login: (args:{email:string, password: string}) => Promise<string| undefined>;
   logout: ()=> void;
 }
 

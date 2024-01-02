@@ -1,7 +1,7 @@
 import './page.css'
-import { Carousel } from "./components/carousel";
 import { Header } from "./components/header/header";
 import { SectionCards } from './components/card';
+import { Carousel } from './components/carousel';
 
 export default function HomePage (){
 
@@ -9,12 +9,11 @@ export default function HomePage (){
     <>
       <Header />
       <section>
-        <Carousel />
+        <Carousel  />  
       </section>
       <main>
         <SectionCards />
       </main>
     </>
-
   )
 } 

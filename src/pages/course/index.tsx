@@ -4,8 +4,8 @@ import { useCourses } from "../../providers/courses/context"
 
 export const CoursePage = ()=> {
  const {courseId} = useParams()
- const { getOneCourse }= useCourses()
- const course = courseId && getOneCourse(courseId)
+ const { getOne }= useCourses()
+ const course = courseId && getOne(courseId)
 
   return course && (
     <section className='course-details'>

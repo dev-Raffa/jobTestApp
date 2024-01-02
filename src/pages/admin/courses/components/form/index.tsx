@@ -1,58 +1,51 @@
 import './form.css'
 import { useCourses } from "../../../../../providers/courses/context"
-import { ICourses, courseAddArgs } from "../../../../../services/Api/types"
+import { ICourses, courseAddArgs } from "../../../../../services/Api/types/course"
 import { Button } from "../../../../../components/button"
 import {useForm} from 'react-hook-form'
 import { coursesForm, coursesFormSchema } from "./schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useState } from "react"
 import { Modal } from "../../../../../components/modal"
 import { useModal } from "../../../../../providers/modal/context"
 
 
-export const CourseForm = ({id}: {id?: number}) =>{
-    const {setShow} = useModal() 
-    const { addCourse, getOneCourse, updateCourse } = useCourses()
+export const CourseForm = () =>{
+    const { setShow } = useModal() 
+    const { add , getOne, update, idCourseSelected } = useCourses()
     const {register, handleSubmit, formState: {errors}, setValue} = useForm<coursesForm>({resolver: zodResolver(coursesFormSchema)})
-    const [msgErro, setMsgError] = useState<string>('')
-    const course:ICourses | undefined = id ? getOneCourse(id.toString()): undefined;
+    const course:ICourses | undefined = idCourseSelected ? getOne(idCourseSelected.toString()): undefined;
     const isNew = course? false: true
 
     if(course){
         setValue('title', course.title)
         setValue('description', course.description)
-        setValue('imgUrl', course.imgUrl)
+        setValue('imageUrl', course.imageUrl)
         setValue('category', course.category)
         setValue('highlight', course.highlight)
+    }else {
+        setValue('title', "")
+        setValue('description', "")
+        setValue('category', "")
+        setValue('imageUrl', "")
+        setValue('highlight', false)
     }
 
-    const submit =  (req: courseAddArgs)=>{
+    const submit = async (req: courseAddArgs)=>{
         if(isNew){
-            console.log('criou')
-            const {obj} = addCourse(req)
-            if(!obj){
-                setMsgError('Ocorreu um erro ao salvar os dados, por favor tente novamente')
-                return;
-            }else{
-                setShow(false)
-                return
+            await add(req)
             }
-        }
-        if(id){     
+        if(idCourseSelected){     
             const course:ICourses ={
                 ...req,
-                id: Number(id)
+                id: idCourseSelected
             }
-            updateCourse(course)
-            setShow(false)
-        } 
-
-        
-        
+            await update(idCourseSelected, course)           
+        }
+        setShow(false)         
     }
     
     const onClickButtonCancel = ()=>{
-        setShow(false)
+        setShow(false)        
     }
 
     return (
@@ -87,10 +80,10 @@ export const CourseForm = ({id}: {id?: number}) =>{
                     <input 
                         type="text"
                         placeholder='url da imagem'
-                        {...register('imgUrl')}
+                        {...register('imageUrl')}
                     />
                 </label>
-                {errors.imgUrl && (<p>{errors.imgUrl.message}</p>)}
+                {errors.imageUrl && (<p>{errors.imageUrl.message}</p>)}
                 <label >
                     <span>categoria:</span>
                 <input 
@@ -114,7 +107,6 @@ export const CourseForm = ({id}: {id?: number}) =>{
                         <Button type='submit' variant='default'>Salvar</Button>
                     </section>            
                 </section>
-                {msgErro && (<p>{msgErro}</p>)}
             </form>
         </Modal>
     )

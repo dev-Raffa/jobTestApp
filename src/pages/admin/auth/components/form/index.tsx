@@ -4,7 +4,6 @@ import { useAdminContext } from "../../../../../providers/admin/context"
 import {useForm} from 'react-hook-form'
 import { authAdminForm, authAdminFormSchema } from "./types.tsx/schema"
 import {zodResolver} from '@hookform/resolvers/zod'
-import { Api } from "../../../../../services/Api"
 import { Button } from "../../../../../components/button"
 import { Logo } from '../../../../../components/logo/logo'
 import { IoPersonOutline } from "react-icons/io5";
@@ -16,11 +15,10 @@ export const AuthAdminForm = () =>{
   const {login}= useAdminContext()
   const {register, handleSubmit, formState: {errors}} =useForm<authAdminForm>({resolver: zodResolver(authAdminFormSchema)})
   
-  const submit = (req: authAdminForm) => {
-    const resp = Api.validateAdim(req.user, req.password)
-   
-    if(resp){
-      login({isLogged: resp})
+  const submit = async (req: authAdminForm) => {
+   const isValid = await login({email: req.user, password: req.password})
+  console.log(isValid)
+    if(isValid === "Success"){
       return (
         window.location.href = '/admin/courses'
       )

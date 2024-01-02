@@ -9,9 +9,9 @@
 
 .course-admin-section-search {
     height: 200px;
-    justify-content: space-between;
+    justify-content: space-evenly;
     width: 90%;
-    padding: 20px 10% 24px 5%;
+    padding: 0 0 24px 0;
     align-items: self-end;
     border-bottom: 1px solid #17c5ef;
     min-width: 600px;
@@ -21,8 +21,13 @@
     display: flex;
     position: relative;
     gap: 24px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .course-admin-section-search > div > button {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
     text-wrap: nowrap;
 }

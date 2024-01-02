@@ -1,7 +1,7 @@
 export interface courseAddArgs {
   title:string;
   description: string;
-  imgUrl: string;
+  imageUrl: string;
   category: string;
   highlight: boolean;
 }
