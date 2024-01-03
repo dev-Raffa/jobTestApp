@@ -2,11 +2,11 @@
     "routes":[
         {
             "src":"/(.*)",
-            "dest":"index.html"
+            "dest":"index.js"
         }, 
         {
             "src": "/auth/admin",
-            "dest": "index.html"
+            "dest": "index.js"
         }       
     ]
     
