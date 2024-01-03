@@ -3,7 +3,13 @@ import { Api } from "../../services/Api"
 import { IProfessors, professorAddArgs, filterProfessors } from "../../services/Api/types/professor"
 import { ProfessorsContext } from "./context"
 
-const Professors:IProfessors[] = await Api.professors.getAll().then()
+let Professors:IProfessors[];  
+
+const getProfessor = async()=>{
+  Professors = await Api.professors.getAll().then()
+}
+
+getProfessor()
 
 export const ProfessorsProvider = ({children}: {children: ReactNode}) => {
   const [professors, setProfessors] =  useState<IProfessors[]>(Professors)

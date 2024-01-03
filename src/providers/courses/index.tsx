@@ -3,7 +3,14 @@ import { CoursesContext } from "./context"
 import { ICourses, courseAddArgs, coursesFilters,} from "../../services/Api/types/course"
 import { Api } from "../../services/Api"
 
-const Courses:ICourses[] = await Api.course.getAll().then()
+let Courses:ICourses[];
+
+const getCourses = async()=>{
+  Courses = await Api.course.getAll().then()
+
+}
+
+getCourses()
 
 export const CousesProvider = ({children}: {children: ReactNode}) => {
   const [courses, setCourses] =  useState<ICourses[]>(Courses)
