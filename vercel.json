@@ -5,9 +5,8 @@
             "dest":"index.js"
         }, 
         {
-            "src": "/auth/admin",
+            "src": "auth/admin",
             "dest": "index.js"
         }       
     ]
-    
 }
