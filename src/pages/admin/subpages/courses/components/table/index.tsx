@@ -3,12 +3,12 @@ import './table.css'
 import { CourseForm } from '../form';
 import { MdClear, MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
-import { useModal } from '../../../../../providers/modal/context';
-import { useCourses } from '../../../../../providers/courses/context';
 import { Link } from 'react-router-dom';
+import { useCoursesModal } from '../../../../providers/courses-modal/context';
+import { useCourses } from '../../../../../../providers/courses/context';
 
 export const TableCourses = () =>{ 
-  const {setShow} = useModal()
+  const {setShow} = useCoursesModal()
   const {remove, courses, filteredCourses, setIdCourseSelected}= useCourses()
   const listCourses = filteredCourses ? filteredCourses : courses 
 

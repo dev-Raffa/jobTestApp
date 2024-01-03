@@ -2,19 +2,21 @@ import './courses.css'
 import {  TableCourses } from "./components/table"
 import { FilterCourses } from './components/filter'
 import { SearchCourse } from './components/search'
-import { Button } from '../../../components/button'
-import { useModal } from '../../../providers/modal/context'
-import { useCourses } from '../../../providers/courses/context'
+import { useCoursesModal } from '../../providers/courses-modal/context'
+import { useCourses } from '../../../../providers/courses/context'
+import { Button } from '../../../../components/button'
+
 
 
 export const CoursesAdmin = () =>{
-  const {setShow}= useModal()
+  const {setShow}= useCoursesModal()
   const {setIdCourseSelected} = useCourses()
 
   const addButtonHandle = ()=>{
     setIdCourseSelected(undefined)
     setShow(true)
   }
+
   return (
     <>
       <header className='course-admin-header'>

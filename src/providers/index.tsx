@@ -1,15 +1,15 @@
 import { ReactNode } from "react"
 import { CousesProvider } from "./courses"
 import { AdminProvider } from "./admin"
-import { ModalProvider } from "./modal"
+import { ProfessorsProvider } from "./professors"
 
 export const Providers = ({children}: {children: ReactNode})=> {
   return(
     <AdminProvider>
       <CousesProvider>
-        <ModalProvider>
+        <ProfessorsProvider>
           {children}
-        </ModalProvider>
+        </ProfessorsProvider>        
       </CousesProvider>
     </AdminProvider>
   )

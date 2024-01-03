@@ -1,13 +1,13 @@
 import './form.css'
 import { useState } from "react"
-import { useAdminContext } from "../../../../../providers/admin/context"
 import {useForm} from 'react-hook-form'
 import { authAdminForm, authAdminFormSchema } from "./types.tsx/schema"
 import {zodResolver} from '@hookform/resolvers/zod'
-import { Button } from "../../../../../components/button"
-import { Logo } from '../../../../../components/logo/logo'
 import { IoPersonOutline } from "react-icons/io5";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { useAdminContext } from '../../../../../../providers/admin/context'
+import { Logo } from '../../../../../../components/logo/logo'
+import { Button } from '../../../../../../components/button'
 
 
 export const AuthAdminForm = () =>{

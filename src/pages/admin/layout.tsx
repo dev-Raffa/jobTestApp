@@ -3,6 +3,7 @@ import './layout.css'
 import {Navigate, Outlet } from "react-router-dom"
 import { NavBar } from "./components/navbar"
 import { useAdminContext } from "../../providers/admin/context"
+import { PageAdminProviders } from './providers'
 
 export const LayoutAdmin = ()=>{
   const {isLogged} = useAdminContext()
@@ -12,12 +13,14 @@ export const LayoutAdmin = ()=>{
   } 
 
   return (
-    <main className="admin-root-layout">
-      <NavBar />
-      <section className='outlet'>
-        {isLogged}
-        <Outlet />
-      </section>
-    </main>
+    <PageAdminProviders>
+      <main className="admin-root-layout">
+        <NavBar />
+        <section className='outlet'>
+          {isLogged}
+          <Outlet />
+        </section>
+      </main>
+    </PageAdminProviders>
   )
 }

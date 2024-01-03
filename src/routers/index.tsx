@@ -2,8 +2,9 @@ import {createBrowserRouter } from 'react-router-dom'
 import HomePage from '../pages/home/page'
 import { CoursePage } from '../pages/course'
 import { LayoutAdmin } from '../pages/admin/layout'
-import { AuthAdmin } from '../pages/admin/auth'
-import { CoursesAdmin } from '../pages/admin/courses'
+import { AuthAdmin } from '../pages/admin/subpages/auth'
+import { CoursesAdmin } from '../pages/admin/subpages/courses'
+import { ProfessorsAdmin } from '../pages/admin/subpages/professors'
 
 
 export const routers = createBrowserRouter([
@@ -29,7 +30,7 @@ export const routers = createBrowserRouter([
       },
       {
         path:'professors',
-        element: <h1>professors list </h1>
+        element: <ProfessorsAdmin />
       }
     ]
   }

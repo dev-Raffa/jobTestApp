@@ -1,11 +1,11 @@
+import { useCourses } from '../../../../../../providers/courses/context'
 import './search.css'
-import { useCourses } from "../../../../../providers/courses/context"
 
 export const SearchCourse = ()=>{
-    const {filterCourses}= useCourses()
+    const {filter}= useCourses()
     
     const onChageHandle=(value: string)=>{
-        filterCourses('title', value)
+        filter('title', value)
     }
 
     return(

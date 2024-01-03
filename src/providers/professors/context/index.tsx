@@ -3,12 +3,15 @@ import { IProfessors, filterProfessors, professorAddArgs } from "../../../servic
 
 
 interface professorContextProps {
-    professors?: IProfessors[],
-    addProfessor: (args:professorAddArgs)=> professorAddArgs
-    updateProfessor:(args: IProfessors)=> void
-    removeProfessor:(id:number)=> void
-    getOneProfessor:(id:string)=>IProfessors
-    filterProfessors:(filter: filterProfessors, value: string | boolean | number)=>void
+    professors: IProfessors[],
+    filteredProfessors?: IProfessors[],
+    idProfessorSelected?: number,
+    setIdProfessorSelected: (id?: number)=>void 
+    add: (args:professorAddArgs)=> void,
+    update:(id: number, args: professorAddArgs)=> void,
+    remove:(id:number)=> void,
+    getOne:(id:string)=>IProfessors,
+    filter:(filter: filterProfessors, value: string | number)=>void
 }
 
 export const ProfessorsContext = createContext({} as professorContextProps)

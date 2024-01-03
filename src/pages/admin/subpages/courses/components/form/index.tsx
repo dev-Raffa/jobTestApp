@@ -1,34 +1,38 @@
 import './form.css'
-import { useCourses } from "../../../../../providers/courses/context"
-import { ICourses, courseAddArgs } from "../../../../../services/Api/types/course"
-import { Button } from "../../../../../components/button"
 import {useForm} from 'react-hook-form'
 import { coursesForm, coursesFormSchema } from "./schema"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { Modal } from "../../../../../components/modal"
-import { useModal } from "../../../../../providers/modal/context"
+import { useCoursesModal } from '../../../../providers/courses-modal/context'
+import { useCourses } from '../../../../../../providers/courses/context'
+import { ICourses, courseAddArgs } from '../../../../../../services/Api/types/course'
+import { Modal } from '../../../../../../components/modal'
+import { Button } from '../../../../../../components/button'
+import { useEffect } from 'react'
 
 
-export const CourseForm = () =>{
-    const { setShow } = useModal() 
+export const CourseForm = () => {
+    const { setShow, show } = useCoursesModal() 
     const { add , getOne, update, idCourseSelected } = useCourses()
     const {register, handleSubmit, formState: {errors}, setValue} = useForm<coursesForm>({resolver: zodResolver(coursesFormSchema)})
     const course:ICourses | undefined = idCourseSelected ? getOne(idCourseSelected.toString()): undefined;
     const isNew = course? false: true
 
-    if(course){
-        setValue('title', course.title)
-        setValue('description', course.description)
-        setValue('imageUrl', course.imageUrl)
-        setValue('category', course.category)
-        setValue('highlight', course.highlight)
-    }else {
-        setValue('title', "")
-        setValue('description', "")
-        setValue('category', "")
-        setValue('imageUrl', "")
-        setValue('highlight', false)
-    }
+    useEffect(()=>{
+        if(course){
+            setValue('title', course.title)
+            setValue('description', course.description)
+            setValue('imageUrl', course.imageUrl)
+            setValue('category', course.category)
+            setValue('highlight', course.highlight)
+        }else {
+            setValue('title', "")
+            setValue('description', "")
+            setValue('category', "")
+            setValue('imageUrl', "")
+            setValue('highlight', false)
+        }
+    },[course, setValue])
+    
 
     const submit = async (req: courseAddArgs)=>{
         if(isNew){
@@ -49,7 +53,7 @@ export const CourseForm = () =>{
     }
 
     return (
-        <Modal>
+        <Modal show={show}>
 
         <form 
           onSubmit={handleSubmit(submit)} 

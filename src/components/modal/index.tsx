@@ -1,9 +1,7 @@
-import { useModal } from "../../providers/modal/context";
 import "./modal.css"
 import { ReactNode } from "react";
 
-export const Modal = ({children}: {children: ReactNode})=>{
-    const {show}= useModal()
+export const Modal = ({children, show}: {children: ReactNode, show: boolean }) =>{
     
     return(
         //@ts-expect-error property show does not exist on type DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>

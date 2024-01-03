@@ -1,6 +1,6 @@
 import './index.css'
+import { useCourses } from '../../../../../../providers/courses/context'
 
-import { useCourses } from "../../../../../providers/courses/context"
 
 export const FilterCourses = () =>{
     const{filter, getCategories}= useCourses()

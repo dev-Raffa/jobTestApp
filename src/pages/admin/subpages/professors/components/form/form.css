@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.course-admin-form {
+    font-family: 'Quicksand';
+    position: relative;
+    display: flex;
+    height: 450px;
+    justify-content: space-between;
+    width: 90%;
+    padding: 20px 10% 24px 5%;
+    align-items: self-end;
+}
+
+.course-admin-form > .column {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 45%;
+    min-width: 300px;
+    justify-content: flex-start;
+    height: 100%;
+    font-size: 16px;
+    color: rgb(22 22 22);
+}
+
+.course-admin-form > .column > label {
+    position: relative;
+    margin-top: 20px;
+}
+
+.course-admin-form > .column > label > span {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    font-weight: bolder;   
+}
+.course-admin-form > .column > label > input,
+.course-admin-form > .column > label > textarea {
+    height: 30px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(159, 166, 255, 0.329);
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    font-family: "Quicksand";
+}
+.course-admin-form > .column > label > textarea {
+    height: 250px;
+    resize: none;
+}
+
+
+.course-admin-form > .column > select {
+    height: 30px;
+    border: none;
+    color: #74797a;
+    font-size: 18px;
+    width: 90%;
+    min-width: 230px;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+.course-admin-form > .column > label {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    justify-content: space-between;
+}
+
+.course-admin-form > .column > section {
+    position: absolute;
+    bottom: 12px;
+    right: -12%;
+}
