@@ -1,5 +1,5 @@
 export class AdminRouter {
-    private endpoint = "http://localhost:3001/admin/"
+    private endpoint = `${import.meta.env.VITE_API_BASE_URL}admin/`
     private headers = new Headers()
 
     constructor(){

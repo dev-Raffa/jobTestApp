@@ -1,7 +1,7 @@
 import { IProfessors, professorAddArgs } from "../types/professor";
 
 export class ProfessosrRouter {
-  private endpoint = 'http://localhost:3001/professor';
+  private endpoint = `${import.meta.env.VITE_API_BASE_URL}professor`;
   private headers = new Headers()
 
   constructor(){

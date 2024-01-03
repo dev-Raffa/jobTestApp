@@ -10,7 +10,7 @@ export const CoursePage = ()=> {
   return course && (
     <section className='course-details'>
       <figure>
-        <img src={course.imgUrl} alt={course.title} />
+        <img src={course.imageUrl} alt={course.title} />
         <figcaption>{course.title}</figcaption>
       </figure>
       <section>

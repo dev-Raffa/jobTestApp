@@ -1,7 +1,7 @@
 import { ICourses, courseAddArgs } from "../types/course";
 
 export class CoursesRouter {
-  private endpoint = 'http://localhost:3001/course';
+  private endpoint = `${import.meta.env.VITE_API_BASE_URL}course/`;
   private headers = new Headers()
 
   constructor(){
