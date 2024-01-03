@@ -1287,10 +1287,10 @@ keyv@^4.5.3:
   dependencies:
     json-buffer "3.0.1"
 
-kyra-components-react@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/kyra-components-react/-/kyra-components-react-0.0.4.tgz#2e299441fd684603bbfa370fadc6625e7b55ae1b"
-  integrity sha512-W1WKFfKC1FjVNIEnX//2OaSRXJ9XsykPtqOkbJPSsVje+CFOVKKWMSBQGojqyvWfwltFGHfJ61659iwFHo7/rA==
+kyra-components-react@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/kyra-components-react/-/kyra-components-react-0.0.5.tgz#8826e51bec7d205f44ceacdd9a65a374eca50364"
+  integrity sha512-YbasEQVK3rohRYRXPMkxLpWb8hJseRz+BVF8RQZYB3Ic00eUN/kOfK3vn1j62F8QZduGd1cahbHZnggLw46Ljw==
   dependencies:
     kyra-components "*"
 

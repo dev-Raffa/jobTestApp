@@ -3,7 +3,7 @@ import { CwCarousel } from 'kyra-components-react'
 import './carousel.css'
 import { useCourses } from '../../../../providers/courses/context'
 
-export const Carousel = ()=> {
+export const Carousel = () => {
   const {filter, filteredCourses} = useCourses()
   
 

@@ -1,5 +1,4 @@
 import './cards.css'
-//@ts-expect-error kyra
 import { CwCard } from "kyra-components-react"
 import { useCourses } from "../../../../providers/courses/context"
 import { Link } from 'react-router-dom'
