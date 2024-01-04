@@ -1,20 +1,19 @@
-import { ReactNode, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { Api } from "../../services/Api"
 import { IProfessors, professorAddArgs, filterProfessors } from "../../services/Api/types/professor"
 import { ProfessorsContext } from "./context"
 
-let Professors:IProfessors[];  
 
-const getProfessor = async()=>{
-  Professors = await Api.professors.getAll().then()
-}
-
-getProfessor()
 
 export const ProfessorsProvider = ({children}: {children: ReactNode}) => {
-  const [professors, setProfessors] =  useState<IProfessors[]>(Professors)
+  const [professors, setProfessors] =  useState<IProfessors[]>([])
   const [filteredProfessors, setFilteredprofessors] = useState<IProfessors[]>()
   const [idProfessorSelected, changeIdProfessorSelected] = useState<number>()
+
+
+  useEffect(()=>{
+    Api.professors.getAll().then(response => setProfessors(response))
+  })
 
   const setIdProfessorSelected=(id?: number)=>{
     changeIdProfessorSelected(id)

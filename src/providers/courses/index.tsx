@@ -1,21 +1,20 @@
-import { ReactNode, useState } from "react"
+import { ReactNode, useEffect, useState } from "react"
 import { CoursesContext } from "./context"
 import { ICourses, courseAddArgs, coursesFilters,} from "../../services/Api/types/course"
 import { Api } from "../../services/Api"
 
-let Courses:ICourses[];
 
-const getCourses = async()=>{
-  Courses = await Api.course.getAll().then()
 
-}
-
-getCourses()
 
 export const CousesProvider = ({children}: {children: ReactNode}) => {
-  const [courses, setCourses] =  useState<ICourses[]>(Courses)
+
+  const [courses, setCourses] =  useState<ICourses[]>([])
   const [filteredCourses, setFilteredCourses] = useState<ICourses[]>()
   const [idCourseSelected, changeIdCourseSelected] = useState<number>()
+
+  useEffect(()=>{
+    Api.course.getAll().then(response => setCourses(response))
+  },[])
 
   const setIdCourseSelected=(id?: number)=>{
     changeIdCourseSelected(id)
@@ -30,7 +29,7 @@ export const CousesProvider = ({children}: {children: ReactNode}) => {
   }
 
   const add = async (args: courseAddArgs) => {
-    const courseExist = courses.find((course)=> course.title.toLowerCase() === args.title.toLowerCase())
+    const courseExist = courses?.find((course)=> course.title.toLowerCase() === args.title.toLowerCase())
 
     if(courseExist){
       throw new Error(`O curso ${args.title} já existe.`)
