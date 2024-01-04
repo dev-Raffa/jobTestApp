@@ -4,8 +4,6 @@ import { ICourses, courseAddArgs, coursesFilters,} from "../../services/Api/type
 import { Api } from "../../services/Api"
 
 
-
-
 export const CousesProvider = ({children}: {children: ReactNode}) => {
 
   const [courses, setCourses] =  useState<ICourses[]>([])
