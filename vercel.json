@@ -1,12 +1,8 @@
 {
-    "routes":[
+    "redirects":[
         {
-            "src":"/(.*)",
-            "dest":"index.js"
-        }, 
-        {
-            "src": "auth/admin",
-            "dest": "index.js"
-        }       
+          "sourse":"/(.*)",
+          "destination":"index.js"  
+        }
     ]
 }
