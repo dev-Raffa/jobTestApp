@@ -2,8 +2,14 @@ section{
   flex-direction: column;
   position: relative;
 }
-header{
+.course-lesson-header{
+  display: flex;
+  width: 100%;
+  background: black;
   z-index: 2;
+  position: absolute;
+  height: 70px;
+  padding: 0 5%
 }
 .course-details{
   display: flex;
@@ -48,6 +54,7 @@ header{
   text-align: center;
   z-index: 1;
   display: flex;
+  justify-content: center
 }
 
 .course-details > .description {

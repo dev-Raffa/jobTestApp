@@ -19,6 +19,7 @@
     height: 100%;
     font-size: 16px;
     color: rgb(22 22 22);
+    gap: 12px;
 }
 
 .courses-lesson-form > .column > label {
@@ -31,7 +32,7 @@
     position: absolute;
     top: -18px;
     left: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bolder;   
 }
 .courses-lesson-form > .column > label > input,
@@ -53,6 +54,9 @@
 
 
 .courses-lesson-form > .column > section {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
     position: absolute;
     flex-direction: row;
     bottom: 12px;

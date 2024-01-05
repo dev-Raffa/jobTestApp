@@ -1,11 +1,12 @@
 .course-admin-form {
+    font-family: 'Quicksand';
     position: relative;
     display: flex;
     height: 450px;
-    justify-content: center;
+    justify-content: space-between;
     width: 90%;
-    padding: 24px 0;
-    align-items: center;
+    padding: 16px;
+    align-items: self-end;
     gap: 24px;
 }
 
@@ -17,6 +18,7 @@
     min-width: 300px;
     justify-content: flex-start;
     height: 100%;
+    gap: 18px;
     font-size: 16px;
     color: rgb(22 22 22);
 }
@@ -30,12 +32,12 @@
     position: absolute;
     top: -18px;
     left: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bolder;   
 }
 .course-admin-form > .column > label > input,
 .course-admin-form > .column > label > textarea {
-    height: 30px;
+    height: 40px;
     width: 100%;
     border-radius: 5px;
     border: 1px solid rgba(159, 166, 255, 0.329);
@@ -44,6 +46,39 @@
     font-size: 16px;
     font-family: "Quicksand";
 }
+.course-admin-form > .column > label > textarea {
+    height: 250px;
+    resize: none;
+}
+
+
+.course-admin-form > .column > select {
+    height: 30px;
+    border: none;
+    color: #74797a;
+    font-size: 18px;
+    width: 90%;
+    min-width: 230px;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+.course-admin-form > .column > label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.course-admin-form > .column > section {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    position: absolute;
+    bottom: 12px;
+    right: 0;
+}
+
 .course-admin-form > .column > label > textarea {
     height: 250px;
     resize: none;

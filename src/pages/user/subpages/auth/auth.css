@@ -1,0 +1,78 @@
+.auth-user-page{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.section-login-register {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 400px;
+    width: 70%;
+    max-width: 600px;
+    min-width: 300px;
+    border-radius: 1.5rem;
+    border: 1px solid black;
+    background-color: rgb(22, 24, 29);
+    overflow: hidden;
+}
+
+.section-login-register[form-active="login"] > .login {
+    opacity: 100%;
+    z-index: 5;
+}
+.section-login-register[form-active="login"]::before{
+    left: 0;
+    right: unset;
+}
+
+.section-login-register[form-active="register"] > .register{
+    opacity: 100%;
+    z-index: 5;
+}
+.section-login-register::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    background-color: black;
+    width: 50%;
+    height: 100%;
+    transition: all 350ms ease 0s;
+}
+
+
+.section-login-register > article {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: all 350ms ease 0s;
+    background-color: transparent;
+}
+
+.section-login-register > article > section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.section-login-register > article > section > button {
+    background-color: transparent;
+    color: white;
+    text-decoration: underline white;
+}
+.section-login-register > article > section > .logo{
+    flex-direction: column;
+    font-weight: bolder;
+    gap: 0;
+    padding: 8px;
+}

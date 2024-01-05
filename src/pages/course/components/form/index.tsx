@@ -1,8 +1,8 @@
+import "./form.css"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useLessons } from "../../../../providers/lessons/contexts"
 import { ILessons, lessonAddArgs } from "../../../../services/Api/types/lesson"
 import { useLessonsModal } from "../../providers/lesson-modal/context"
-import "./form.css"
 import { lessonForm, lessonFormSchema } from "./schema"
 import { useForm } from "react-hook-form"
 import { useEffect } from "react"
@@ -103,7 +103,7 @@ export const LessonForm = () => {
                     </label>
                     {errors.url && (<p>{errors.url.message}</p>)}
                     <label>
-                        <span>id professor:</span>
+                        <span>professor:</span>
                         <select  
                             {...register('professor')}
                         >

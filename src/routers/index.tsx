@@ -5,6 +5,7 @@ import { LayoutAdmin } from '../pages/admin/layout'
 import { AuthAdmin } from '../pages/admin/subpages/auth'
 import { CoursesAdmin } from '../pages/admin/subpages/courses'
 import { ProfessorsAdmin } from '../pages/admin/subpages/professors'
+import { UserAuthPage } from '../pages/user/subpages/auth/page'
 
 
 export const routers = createBrowserRouter([
@@ -33,5 +34,9 @@ export const routers = createBrowserRouter([
         element: <ProfessorsAdmin />
       }
     ]
+  },
+  {
+    path:'auth/user/:action',
+    element: <UserAuthPage />
   }
 ])

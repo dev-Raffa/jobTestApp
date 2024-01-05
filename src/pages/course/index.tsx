@@ -45,7 +45,7 @@ export const CoursePage = () => {
   return course && (
     <>
       <section>
-        <header>
+        <header className='course-lesson-header'>
           <Logo />
         </header>
         <article className='course-details'>

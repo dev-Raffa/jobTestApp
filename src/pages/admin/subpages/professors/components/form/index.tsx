@@ -56,7 +56,7 @@ export const ProfessorsForm = () =>{
 
         <form 
           onSubmit={handleSubmit(submit)} 
-          className='course-admin-form'
+          className='professor-admin-form'
           >
             <section className='column'>
                 <label>

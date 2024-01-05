@@ -17,7 +17,6 @@ export const AuthAdminForm = () =>{
   
   const submit = async (req: authAdminForm) => {
    const isValid = await login({email: req.user, password: req.password})
-  console.log(isValid)
     if(isValid === "Success"){
       return (
         window.location.href = '/admin/courses'

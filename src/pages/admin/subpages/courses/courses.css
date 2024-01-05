@@ -1,14 +1,20 @@
+
+
 .course-admin-header{
+    display: flex;
     height: 90px;
     background: black;
     padding: 0;
     align-items: center;
     color: #17c5ef;
     justify-content: center;
+    width: 100%;
 }
 
 .course-admin-section-search {
     height: 200px;
+    flex-direction: row;
+    display: flex;
     justify-content: space-evenly;
     width: 90%;
     padding: 0 0 24px 0;

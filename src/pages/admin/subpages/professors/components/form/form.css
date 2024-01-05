@@ -1,17 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
-.course-admin-form {
+.professor-admin-form {
     font-family: 'Quicksand';
     position: relative;
     display: flex;
     height: 450px;
     justify-content: space-between;
     width: 90%;
-    padding: 20px 10% 24px 5%;
+    padding: 16px;
     align-items: self-end;
+    gap: 24px;
 }
 
-.course-admin-form > .column {
+.professor-admin-form > .column {
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -19,25 +18,26 @@
     min-width: 300px;
     justify-content: flex-start;
     height: 100%;
+    gap: 18px;
     font-size: 16px;
     color: rgb(22 22 22);
 }
 
-.course-admin-form > .column > label {
+.professor-admin-form > .column > label {
     position: relative;
     margin-top: 20px;
 }
 
-.course-admin-form > .column > label > span {
+.professor-admin-form > .column > label > span {
     position: absolute;
     top: -18px;
     left: 0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bolder;   
 }
-.course-admin-form > .column > label > input,
-.course-admin-form > .column > label > textarea {
-    height: 30px;
+.professor-admin-form > .column > label > input,
+.professor-admin-form > .column > label > textarea {
+    height: 40px;
     width: 100%;
     border-radius: 5px;
     border: 1px solid rgba(159, 166, 255, 0.329);
@@ -46,13 +46,13 @@
     font-size: 16px;
     font-family: "Quicksand";
 }
-.course-admin-form > .column > label > textarea {
+.professor-admin-form > .column > label > textarea {
     height: 250px;
     resize: none;
 }
 
 
-.course-admin-form > .column > select {
+.professor-admin-form > .column > select {
     height: 30px;
     border: none;
     color: #74797a;
@@ -63,15 +63,18 @@
     border-radius: 5px;
 }
 
-.course-admin-form > .column > label {
+.professor-admin-form > .column > label {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
     justify-content: space-between;
 }
 
-.course-admin-form > .column > section {
+.professor-admin-form > .column > section {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
     position: absolute;
     bottom: 12px;
-    right: -12%;
+    right: 0;
 }
