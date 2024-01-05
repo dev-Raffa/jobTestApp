@@ -12,18 +12,17 @@ import { useEffect } from 'react'
 
 export const CourseForm = () => {
     const { setShow, show } = useCoursesModal() 
-    const { add , getOne, update, idCourseSelected } = useCourses()
+    const { add , update, courseSelected } = useCourses()
     const {register, handleSubmit, formState: {errors}, setValue} = useForm<coursesForm>({resolver: zodResolver(coursesFormSchema)})
-    const course:ICourses | undefined = idCourseSelected ? getOne(idCourseSelected.toString()): undefined;
-    const isNew = course? false: true
-
+    
     useEffect(()=>{
-        if(course){
-            setValue('title', course.title)
-            setValue('description', course.description)
-            setValue('imageUrl', course.imageUrl)
-            setValue('category', course.category)
-            setValue('highlight', course.highlight)
+        
+        if(courseSelected){
+            setValue('title', courseSelected.title)
+            setValue('description', courseSelected.description)
+            setValue('imageUrl', courseSelected.imageUrl)
+            setValue('category', courseSelected.category)
+            setValue('highlight', courseSelected.highlight)
         }else {
             setValue('title', "")
             setValue('description', "")
@@ -31,19 +30,19 @@ export const CourseForm = () => {
             setValue('imageUrl', "")
             setValue('highlight', false)
         }
-    },[course, setValue])
-    
+    },[courseSelected, setValue] )
+
 
     const submit = async (req: courseAddArgs)=>{
-        if(isNew){
+        if(!courseSelected){
             await add(req)
             }
-        if(idCourseSelected){     
+        else{     
             const course:ICourses ={
                 ...req,
-                id: idCourseSelected
+                id: courseSelected.id
             }
-            await update(idCourseSelected, course)           
+            await update(courseSelected.id, course)           
         }
         setShow(false)         
     }

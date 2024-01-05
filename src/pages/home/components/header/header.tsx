@@ -4,7 +4,7 @@ import './header.css'
 
 export const Header = () => {
   return(
-    <header>
+    <header className='homePage-header'>
       <Logo />
       <section>
         <Button variant='default'>

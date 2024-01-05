@@ -1,9 +1,12 @@
+import { ILessons } from "./lesson";
+
 export interface courseAddArgs {
   title:string;
   description: string;
   imageUrl: string;
   category: string;
   highlight: boolean;
+  classes?: ILessons[]
 }
 
 

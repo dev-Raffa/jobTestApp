@@ -1,14 +1,14 @@
-import { ICourses, courseAddArgs } from "../types/course";
+import { ILessons, lessonAddArgs } from "../types/lesson"
 
-export class CoursesRouter {
-  private endpoint = `${import.meta.env.VITE_API_BASE_URL}course`;
-  private headers = new Headers()
+export class LessonsRouter {
+    private endpoint = `${import.meta.env.VITE_API_BASE_URL}class`
+    private headers = new Headers()
 
   constructor(){
     this.headers.append('Content-Type','application/json')
   }
 
-  save = async (args: courseAddArgs) => {
+  save = async (args: lessonAddArgs) => {
     return await fetch(this.endpoint, {
       headers: this.headers,
       method: 'POST',
@@ -16,7 +16,7 @@ export class CoursesRouter {
     })   
   }
 
-  getAll = async (): Promise<ICourses[]> => {
+  getAll = async (): Promise<ILessons[]> => {
     return await fetch(this.endpoint, {
       headers: this.headers,
       method: 'GET'
@@ -30,7 +30,7 @@ export class CoursesRouter {
     }).then((resp)=> resp.json())
   }
 
-  update = async (id: number, args: courseAddArgs) => {
+  update = async (id: number, args: lessonAddArgs) => {
     return await fetch(this.endpoint + `/${id}`, {
       headers: this.headers,
       method: 'PATCH',
@@ -45,10 +45,17 @@ export class CoursesRouter {
     })
   }
 
-  getOneWithLessons =async (id:number) => {
-     return await fetch(`${this.endpoint}/${id}/classes`, {
+  getByProfessor = async (id:number)=>{
+    return await fetch(`${this.endpoint}/professor/${id}`, {
       headers: this.headers,
-      method: 'GET'
-    })
+      method: "GET"
+    }).then((resp)=> resp.json())
+  }
+
+  getByCourse = async (id:number)=>{
+    return await fetch(`${this.endpoint}/course/${id}`,{
+      headers: this.headers,
+      method: "GET"
+    }).then((resp)=> resp.json())
   }
 }

@@ -1,14 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
 .course-admin-form {
-    font-family: 'Quicksand';
     position: relative;
     display: flex;
     height: 450px;
-    justify-content: space-between;
+    justify-content: center;
     width: 90%;
-    padding: 20px 10% 24px 5%;
-    align-items: self-end;
+    padding: 24px 0;
+    align-items: center;
+    gap: 24px;
 }
 
 .course-admin-form > .column {
@@ -51,28 +49,18 @@
     resize: none;
 }
 
-
-.course-admin-form > .column > select {
-    height: 30px;
-    border: none;
-    color: #74797a;
-    font-size: 18px;
-    width: 90%;
-    min-width: 230px;
-    padding: 4px 8px;
-    border-radius: 5px;
-}
-
-.course-admin-form > .column > label {
+.course-admin-form > .column > label:not(:empty):has(>.switch) {
     display: flex;
-    width: 90%;
+    flex-direction: row;
+    width: 100%;
     justify-content: space-between;
 }
 
 .course-admin-form > .column > section {
     position: absolute;
+    flex-direction: row;
     bottom: 12px;
-    right: -12%;
+    right: 0;
 }
 
 .switch {

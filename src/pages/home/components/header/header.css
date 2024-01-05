@@ -1,4 +1,4 @@
-header{
+.homePage-header {
   display: flex;
   background-color: rgb(24, 23, 23);
   width: 100%;
@@ -7,8 +7,9 @@ header{
   padding: 0 96px;
   justify-content: space-between;
 }
-section{
+.homePage-header > section{
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 8px;
 }

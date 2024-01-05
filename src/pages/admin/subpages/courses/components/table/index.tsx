@@ -9,13 +9,15 @@ import { useCourses } from '../../../../../../providers/courses/context';
 
 export const TableCourses = () =>{ 
   const {setShow} = useCoursesModal()
-  const {remove, courses, filteredCourses, setIdCourseSelected}= useCourses()
+  const {remove, courses, filteredCourses, setCourseSelected}= useCourses()
   const listCourses = filteredCourses ? filteredCourses : courses 
 
 
   const onClickButtonEditHandle = (id: number)=> {
-    setIdCourseSelected(id)
-    setShow(true)
+    setCourseSelected(id)
+    setTimeout(() => {
+      setShow(true)
+    }, 300);
   }
   
   const onClickButtonClearHandle = async (id: number)=>{
@@ -44,7 +46,7 @@ export const TableCourses = () =>{
               <td className='tb-col category'>{course.category}</td>
               <td className='tb-col highlight'>{course.highlight ? 'sim':'não'}</td>
               <td className='tb-col actions'>
-                <Link to={`/courses/${course.id}`} target='_blank'>
+                <Link to={`/courses/${course.id}`} onClick={()=>setCourseSelected(course.id)}>
                   <MdOutlineRemoveRedEye />
                 </Link>
                 <button className='edit' onClick={()=>onClickButtonEditHandle(course.id)}>

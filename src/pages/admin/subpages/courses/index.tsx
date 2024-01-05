@@ -10,11 +10,13 @@ import { Button } from '../../../../components/button'
 
 export const CoursesAdmin = () =>{
   const {setShow}= useCoursesModal()
-  const {setIdCourseSelected} = useCourses()
+  const {setCourseSelected} = useCourses()
 
   const addButtonHandle = ()=>{
-    setIdCourseSelected(undefined)
-    setShow(true)
+    setCourseSelected()
+    setTimeout(() => {
+      setShow(true)
+    }, 300);
   }
 
   return (

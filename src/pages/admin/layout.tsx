@@ -17,8 +17,8 @@ export const LayoutAdmin = ()=>{
       <main className="admin-root-layout">
         <NavBar />
         <section className='outlet'>
-          {isLogged}
-          <Outlet />
+            {isLogged}
+            <Outlet />
         </section>
       </main>
     </PageAdminProviders>

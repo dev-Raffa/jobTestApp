@@ -13,14 +13,16 @@ export type addCourseResp = {
 interface coursesContext {
   courses: ICourses[]
   filteredCourses?: ICourses[]
-  idCourseSelected?: number;
-  setIdCourseSelected: (id?:number)=> void
+  courseSelected?: ICourses;
+  setCourseSelected: (id?:number)=> void
+  setFilteredCourses: (arg?:ICourses[])=> void
   getCategories: () => string[]
   add: (args:courseAddArgs)=> void
   update:(id:number,args: ICourses)=> Promise<void>
   remove:(id:number)=> Promise<void>
-  getOne:(id:string)=>ICourses
-  filter:(filter: coursesFilters, value: string | boolean | number)=>void
+  getOne:(id:number)=>Promise<ICourses>
+  filter:(filter: coursesFilters, value: string | boolean | number)=>ICourses[]|undefined
+  getOneWithLessons:(id:number)=> Promise<ICourses>
 }
 
 export const CoursesContext = createContext({}as coursesContext)

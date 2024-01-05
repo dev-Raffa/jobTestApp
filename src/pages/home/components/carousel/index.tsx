@@ -2,16 +2,23 @@
 import { CwCarousel } from 'kyra-components-react'
 import './carousel.css'
 import { useCourses } from '../../../../providers/courses/context'
+import { useEffect, useState } from 'react'
+import { ICourses } from '../../../../services/Api/types/course'
 
 export const Carousel = () => {
-  const {filter, filteredCourses} = useCourses()
+  const {filter } = useCourses()
+
+  const [highlight, setHighLight] = useState<ICourses[]>()
   
+  useEffect(()=>{
+   const res = filter('highlight', true)
+    res && setHighLight(res)
 
-  filter('highlight', true)
-
-  return filteredCourses && (
+  },[setHighLight, filter]) 
+ 
+  return highlight && (
     <CwCarousel width='100vw' height='450px' index colors='#17c5ef'>
-      { filteredCourses.map((item, index)=>{
+      { highlight.map((item, index)=>{
         return(
           <figure key={`highlight-course-${index}`} className='carousel-item'>
           <img src={item.imageUrl} alt={item.title} />

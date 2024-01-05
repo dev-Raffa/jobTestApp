@@ -1,0 +1,19 @@
+.admin-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    position: absolute;
+    top: 4px;
+    right: 8px;
+}
+.admin-buttons > button {
+    font-size: 16px;
+    background-color: transparent;
+}
+
+.admin-buttons > .bt-clear {
+    color: red;
+}
+.admin-buttons > .bt-edit {
+    color: green;
+}

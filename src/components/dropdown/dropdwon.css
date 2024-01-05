@@ -1,0 +1,16 @@
+.dropdown {
+    background: #f3f3f1;
+    padding: 8px 0 0 0;
+    border-radius: 5px;
+    width: 99%;
+    position: relative;
+}
+
+.dropdown:not([open])> .item{
+    display: none;
+}
+
+.dropdown > .item {
+    padding: 4px 12px 12px 12px;
+    color: black;
+}

@@ -1,5 +1,6 @@
 .section-cards-courses{
   display: flex;
+  flex-direction: row;
   gap: 24px 50px;
   align-items: center;
   flex-wrap: wrap;

@@ -5,21 +5,27 @@ import { Api } from "../../services/Api"
 
 
 export const CousesProvider = ({children}: {children: ReactNode}) => {
-
   const [courses, setCourses] =  useState<ICourses[]>([])
   const [filteredCourses, setFilteredCourses] = useState<ICourses[]>()
-  const [idCourseSelected, changeIdCourseSelected] = useState<number>()
+  const [courseSelected, changeCourseSelected] = useState<ICourses>()
 
   useEffect(()=>{
-    Api.course.getAll().then(response => setCourses(response))
+   Api.course.getAll().then(response => setCourses(response))
   },[])
 
-  const setIdCourseSelected=(id?: number)=>{
-    changeIdCourseSelected(id)
+  const setCourseSelected= async (id?: number)=>{
+    if(id){
+      const course = await Api.course.getOne(id)
+      changeCourseSelected(course)
+    }
+    else{
+      changeCourseSelected(undefined)
+    }
   }
 
-  const getOne =  (id: string) => {
-    const course = courses?.find((course)=> course.id.toString() === id)
+  const getOne = async(id: number) => {
+
+    const course = await Api.course.getOne(id)
     if(!course){
       throw new Error('curso não encontrado.')
     }
@@ -27,7 +33,7 @@ export const CousesProvider = ({children}: {children: ReactNode}) => {
   }
 
   const add = async (args: courseAddArgs) => {
-    const courseExist = courses?.find((course)=> course.title.toLowerCase() === args.title.toLowerCase())
+    const courseExist = courses.find((course)=> course.title.toLowerCase() === args.title.toLowerCase())
 
     if(courseExist){
       throw new Error(`O curso ${args.title} já existe.`)
@@ -98,21 +104,27 @@ export const CousesProvider = ({children}: {children: ReactNode}) => {
 
   
   const filter = (filter: coursesFilters, value: string|number|boolean)=>{
+    let result;
+   
     if(!value){
-      setFilteredCourses(undefined)
-      return
+      result = undefined
+    }else if(filter=== "title" || filter ==='description'){
+       result = courses.filter((course)=> course[`${filter}`].toLowerCase().includes(value.toString().toLowerCase()))
+    }else {
+      result = courses.filter((course)=> course[`${filter}`] == value)
     }
+    return result
+  }
+
+  const getOneWithLessons = async (id: number) => {
+    const resp:ICourses = await Api.course.getOneWithLessons(id).then(resp=> resp.json())
     
-    if(filter=== "title" || filter ==='description'){
-      setFilteredCourses(courses.filter((course)=> course[`${filter}`].toLowerCase().includes(value.toString().toLowerCase())))
-      return
-    }
-    setFilteredCourses(courses.filter((course)=> course[`${filter}`] == value))
+    return resp
   }
 
   return (
     <CoursesContext.Provider  value={
-      {courses, filteredCourses, idCourseSelected, setIdCourseSelected, add, getOne, filter, update,remove, getCategories}}>
+      {courses, filteredCourses, courseSelected, setCourseSelected, add, getOne, filter,  setFilteredCourses, update,remove, getCategories, getOneWithLessons}}>
         {children}
     </CoursesContext.Provider>
     )

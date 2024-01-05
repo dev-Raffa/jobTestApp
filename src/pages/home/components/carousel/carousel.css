@@ -2,6 +2,13 @@ cw-carousel>.nextButton {
   right: 0px;
 }
 
+cw-carousel>.index-section{
+  flex-direction: row;
+}
+
+cw-carousel>.groupItems {
+  flex-direction: row;
+}
 
 .carousel-item {
   margin-block-start: 0;
@@ -12,7 +19,8 @@ cw-carousel>.nextButton {
   padding: 0;
   position: relative;
   width: 100%;
- height: 450px;
+  height: 450px;
+  flex-direction: row;
 }
 
 .carousel-item::before{

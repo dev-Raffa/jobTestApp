@@ -1,0 +1,61 @@
+.courses-lesson-form {
+    position: relative;
+    display: flex;
+    height: 450px;
+    justify-content: center;
+    width: 100%;
+    padding: 24px 0;
+    align-items: center;
+    gap: 24px;
+}
+
+.courses-lesson-form > .column {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 45%;
+    min-width: 300px;
+    justify-content: flex-start;
+    height: 100%;
+    font-size: 16px;
+    color: rgb(22 22 22);
+}
+
+.courses-lesson-form > .column > label {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.courses-lesson-form > .column > label > span {
+    position: absolute;
+    top: -18px;
+    left: 0;
+    font-size: 12px;
+    font-weight: bolder;   
+}
+.courses-lesson-form > .column > label > input,
+.courses-lesson-form > .column > label > textarea,
+.courses-lesson-form > .column > label > select {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgba(159, 166, 255, 0.329);
+    outline: none;
+    padding: 8px;
+    font-size: 16px;
+    font-family: "Quicksand";
+}
+.courses-lesson-form > .column > label > textarea {
+    height: 250px;
+    resize: none;
+}
+
+
+.courses-lesson-form > .column > section {
+    position: absolute;
+    flex-direction: row;
+    bottom: 12px;
+    right: 0;
+}
+
